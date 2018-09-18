@@ -1,0 +1,40 @@
+﻿@page "/router"
+@page "/router/{Param}"
+
+<H1>Router @Param</H1>
+<p>
+    Blazor comes with a client-side router.
+    It has limited functionality, yet it contains all we need to create basic web apps that consist of multiple pages
+
+    Routeing in Blazor is similar to other SPA applications such as Angular. While the Blazor router is much simpler than those found in other frameworks.
+</p>
+
+<ul>
+    <li><h3>Route Template</h3>
+        <p>In Blazor, route template by adding the @("@page")  directive to the top of a component.</p></li>
+    <li><h3>Route Parameters</h3>
+        <p>When defining a route template you can use curly brackets to include a parameter, @("@page '/router/{Param}'. This parameter is then assigned to a property of the same name on the component.")</p>
+    </li>
+    <li>
+        <h3>Linking Pages witn NavLink</h3><br />
+        NavLink component provided by Blazor. It takes a href as a parameter which it then uses to render a standard a tag. But whats really useful is that when the current URI matches the href it will add an active class to the link.
+        We can also define a Match parameter on a NavLink which tells the component how to decide if the current URI matches the href
+        <br />
+        @("<NavLink href='/expenses' Match=NavLinkMatch.Prefix>Expenses</NavLink>");<br />
+        @("<NavLink href='/expenses/bills' Match=NavLinkMatch.All>Bills</NavLink>");<br />
+        @("<NavLink href='/expenses/groceries' Match=NavLinkMatch.All>Groceries</NavLink>")");<br />
+        @("<NavLink href='/expenses/shopping' Match=NavLinkMatch.All>Shopping</NavLink>");<br />
+
+        <h4>Navigate to a link from a component</h4>
+        <span>@("Inject it into your component or service => @inject IUriHelper UriHelper")</span><br />
+        <span>@("Route to page from code. => UriHelper.NavigateTo('/home')")</span>
+
+    </li>
+</ul>
+
+@functions{
+    [Parameter]
+    private string Param { get; set; }
+
+    string inject = "@inject";
+}

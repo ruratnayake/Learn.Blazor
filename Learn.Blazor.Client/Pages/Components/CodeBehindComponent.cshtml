@@ -1,0 +1,9 @@
+﻿@page "/code-behind-component"
+@inherits  CodeBehindComponentBase
+
+<h1>@title</h1>
+
+<p>With this style of component view markup and logic can be separated into separate files. In the current version of Blazor (0.2.0) this is achieved using the @atinherits directive.</p>
+<p>Using the @atinherits inherits directive instructs Blazor to derive the class generated from the razor view, from the class specified with the directive. The code behind class specified with the directive must itself be derived from BlazorComponent. As this class provides all base functionality for components in Blazor.</p>
+
+<p>One gotcha with this feature is that the base class specified cannot have the same name as the razor view. In its current state Blazor can't handle partial classes, it can only handle inheritance. As all razor views get compiled down to classes, if both the razor view and base class were named the same it would cause a compile time error. There is a proposal to implement partial classes which could make the code behind style much cleaner, but this is still under review.</p>

@@ -1,0 +1,29 @@
+﻿@page "/events"
+
+<h1>@title</h1>
+
+<p>In the first preview of Blazor there were just three events available - onclick, onchange and onkeypress. With 0.2.0+ this is no longer the case and we have access to any event we need.</p>
+
+<input type="text"
+       onabort="@(() => writeMessage("on abort"))"
+       onactivate="@(() => writeMessage("on activate"))"
+       onkeyup="@(() => writeMessage("on keyup"))"
+       onmouseover="@(() => writeMessage("on mouseover"))"
+       onfocusout="@(() => writeMessage("on focuseout"))"
+       onchange="@(() => writeMessage("on Change"))" />
+<input type="button" onclick="@(() => writeMessage("on onclick"))" value="Click" />
+
+<br />
+<span>Event: @message</span>
+
+
+@functions {
+    string title = "Events";
+    public string message { get; set; }
+
+    void writeMessage(string _message)
+    {
+        Console.WriteLine(_message);
+        message = _message;
+    }
+}

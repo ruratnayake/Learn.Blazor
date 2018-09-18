@@ -1,0 +1,99 @@
+﻿@page "/Data-Binding"
+@page "/two-way-data-binding"
+
+
+
+<p>
+    <table>
+        <tr>
+            <td>Enter your name:</td>
+            <td> <input type="text" bind="@Name" /></td>
+        </tr>
+        <tr>
+            <td>Work Experience in Years</td>
+            <td><input type="number" bind="@WorkExperience" /></td>
+        </tr>
+        <tr>
+            <td>Date of Birth (yy-mm-dd)</td>
+            <td><input type="text" bind="@Birthday" format-value="yy-MM-dd" /></td>
+        </tr>
+        <tr>
+            <td>Employeement Type</td>
+            <td>
+                <select id="select-box" bind="@TypeOfEmployee">
+                    <option value=@EmployeeType.Engineer>@EmployeeType.Engineer.ToString()</option>
+                    <option value=@EmployeeType.SeniorEngineer>Senior Engineer</option>
+                    <option value=@EmployeeType.Contractor>@EmployeeType.Contractor.ToString()</option>
+                    <option value=@EmployeeType.Intern>@EmployeeType.Intern.ToString()</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">Are you interested in new technologies? <input type="checkbox" bind="@IsInterested" /><br /></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="button" onclick="@SubmitForm" value="Submit" /></td>
+        </tr>
+    </table>
+
+    @*
+        The following line would not work because decimal is not supported
+        What is your salery? <input type="number" bind="Salary" /><br />
+    *@
+</p>
+
+@if (IsFormSubmitted)
+{
+    <h2>Hello, @Name!</h2>
+
+    <p>
+        You are @Age years old (based on DOB @((Birthday).ToString("yy-MM-dd")). You are currently working as a @TypeOfEmployee.
+        you have @WorkExperience years of industry experience.
+    </p>
+
+    @if (IsInterested)
+    {
+        <p>You are interested in new technologies!</p>
+    }
+    <button onclick=@(() => Console.WriteLine("Hello World"))>Write to Log</button>
+}
+
+@functions {
+    private enum EmployeeType { Engineer, SeniorEngineer, Contractor, Intern };
+    private EmployeeType TypeOfEmployee { get; set; } = EmployeeType.Engineer;
+
+    //private enum Genders { Male, Female };
+    //private Genders Gender { get; set; }
+
+
+    private string Name { get; set; }
+    private bool IsInterested { get; set; }
+    public int WorkExperience { get; set; }
+    private int Age { get; set; }
+    public DateTime Birthday { get; set; }
+    public bool IsFormSubmitted { get; set; } = false;
+
+    //public decimal Salary { get; set; }
+
+    void SubmitForm()
+    {
+        try
+        {
+            IsFormSubmitted = true;
+            DateTime dob = Birthday;
+            Age = new DateTime(DateTime.Now.Subtract(dob).Ticks).Year - 1;
+
+        }
+        catch (Exception)
+        {
+
+        }
+
+    }
+    protected override void OnAfterRender()
+    {
+        Console.WriteLine("OnAfterRender");
+        base.OnAfterRender();
+    }
+}

@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <title>Learn.Blazor</title>
+    <base href="/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <app>Loading...</app>
+
+    <script src="_framework/blazor.webassembly.js"></script>
+
+    <script type="text/javascript">
+        function JSMethod() {
+            alert("JavaScript function invoked from C#");
+        }
+    </script>
+
+    <script>
+        function CSMethod() {
+            DotNet.invokeMethodAsync('Learn.Blazor.Client.Pages.JavaScriptInterop.JavaScriptInteropBase', 'CSCallBackMethod');
+        }
+    </script>
+</body>
+</html>

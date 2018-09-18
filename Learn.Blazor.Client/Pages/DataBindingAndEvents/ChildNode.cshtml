@@ -1,0 +1,20 @@
+﻿<h1>@title</h1>
+
+<p>childNodeMessage</p>
+
+<p>@ParentMessage</p>
+
+@functions {
+    string title = "Child Node";
+
+    [Parameter]
+    private string ParentMessage { get;set;}
+
+    string childNodeMessage = "Child Message";
+
+    protected override void OnParametersSet()
+    {
+        Console.WriteLine("OnParametersSet");
+        base.OnParametersSet();
+    }
+}

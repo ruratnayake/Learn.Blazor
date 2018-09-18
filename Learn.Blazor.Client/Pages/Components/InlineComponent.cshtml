@@ -1,0 +1,11 @@
+﻿@page "/inline-component"
+
+<h1>@title</h1>
+
+<p>This is the simplest and most common component in Blazor and is what you will find bundled with the starter project. It is just a regular Razor 
+    View file which the Blazor compiler turns into a C# class at build time.</p>
+<p>When using the inline style you can add your view markup and logic all in the same file. Logic is separated by using a Razor functions block.</p>
+
+@functions {
+    public string title = "Inline Component";
+}

@@ -1,0 +1,41 @@
+﻿@page "/life-cycle-events"
+
+<h1>Life Cycle Events</h1>
+
+<div class="life-cycle-events"></div>
+
+<h3>OnInit and OnInitAsync</h3>
+<p>
+    OnInit and OnInitAsync are invoked when the component is ready to start, having received its initial parameters from its parent in the render tree.
+</p>
+<br />
+
+<h3>OnParametersSet and OnParametersSetAsync</h3>
+<p>
+    OnParametersSet and OnParametersSetAsync is invoked when the component has received parameters from its parent in the render tree, and the incoming values have been assigned to properties.
+</p>
+<br />
+
+<h3>ShouldRender</h3>
+<p>
+    You can override ShouldRender to suppress refreshing of the UI. If your implementation returns true, UI is refreshed. Otherwise, changes are not propagated to the UI. Note that an initial rendering is always performed, independent of the return value of ShouldRender
+</p>
+<br />
+
+
+@functions{
+
+    protected override void OnInit()
+    {
+        Console.WriteLine("OnInit");
+    }
+
+    protected override Task OnInitAsync()
+    {
+        Console.WriteLine("OnInitAsync");
+        return base.OnInitAsync();
+    }
+
+
+
+}

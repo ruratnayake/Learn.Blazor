@@ -1,0 +1,17 @@
+﻿@page "/custom-layout"
+
+<H1>Layout</H1>
+<p>
+    Blazor layout is just another Blazor component. It is defined in a Razor template or in C# code, it can contain data binding, dependency injection is supported, etc.
+</p>
+<ul>
+    <li>has to implement Microsoft.AspNetCore.Blazor.Layouts.ILayoutComponent.This interface adds a property Body to the component </li>
+    <li>The layout component contains the Razor keyword @Body. During rendering, it is replaced by the content of the layout.</li>
+</ul>
+
+@functions{
+    [Parameter]
+    private string Param { get; set; }
+
+    string Body = "@Body";
+}

@@ -1,0 +1,30 @@
+﻿@page "/js-interop"
+@inherits JavaScriptInteropBase
+
+@using Microsoft.AspNetCore.Blazor.Browser
+@inject HttpClient Http
+
+<h1>JavaScript Interop</h1>
+
+<p>It's great that with Blazor we can now use C# in the browser. But, unfortunately, we can't yet do everything with it.</p>
+
+<br />
+<p>
+    JavaScript Interop is the feature provided by WebAssembly, since Blazor runs on Mono and mono is compiled to WebAssembly. Hence, Blazor can also implement this feature.
+</p>
+
+<h3>Invoke JavaScript Methods from C# - Important</h3>
+<ul>
+    <li>Add JavaScript Function</li>
+    <li>Write your JS code in index.html file. Not in your blazor component (.cshtml file)</li>
+    <li>Add your suctom script after <b>blazor.webassembly.js</b></li>
+</ul>
+
+<input type="button" onclick="@CallJSMethod" value="Call JS Method" />
+
+<h3>Invoke C# methods from JavaScript - Important</h3>
+<br />
+@homeWorkMessage
+<br />
+<input type="button" onclick="@homeWork" value="Call c# Method" />
+
