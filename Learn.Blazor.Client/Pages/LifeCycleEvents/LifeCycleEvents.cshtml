@@ -4,9 +4,9 @@
 
 <div class="life-cycle-events"></div>
 
-<h3>OnInit and OnInitAsync</h3>
+<h3>OnInitialized and OnInitializedAsync</h3>
 <p>
-    OnInit and OnInitAsync are invoked when the component is ready to start, having received its initial parameters from its parent in the render tree.
+    OnInitialized and OnInitializedAsync are invoked when the component is ready to start, having received its initial parameters from its parent in the render tree.
 </p>
 <br />
 
@@ -25,15 +25,15 @@
 
 @functions{
 
-    protected override void OnInit()
+    protected override void OnInitialized()
     {
-        Console.WriteLine("OnInit");
+        Console.WriteLine("OnInitialized");
     }
 
-    protected override Task OnInitAsync()
+    protected override Task OnInitializedAsync()
     {
-        Console.WriteLine("OnInitAsync");
-        return base.OnInitAsync();
+        Console.WriteLine("OnInitializedAsync");
+        return base.OnInitializedAsync();
     }
 
 
